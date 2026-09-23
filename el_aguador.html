@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Patrimonio Digital - El Aguador</title>
+
+
+    <!-- MODEL VIEWER -->
+
+    <script
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
+    </script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f1f0ec;
+            color: #222222;
+        }
+
+
+        header {
+            background-color: #202020;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+
+        header h1 {
+            margin: 0;
+            font-size: 20px;
+            letter-spacing: 2px;
+        }
+
+
+        .contenedor {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+
+
+        .visor {
+            position: relative;
+            width: 100%;
+            background-color: #d8d6d0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+
+        model-viewer {
+            display: block;
+            width: 100%;
+            height: 600px;
+            background-color: #d8d6d0;
+        }
+
+
+        #boton-ar {
+            position: absolute;
+
+            left: 50%;
+            bottom: 20px;
+
+            transform: translateX(-50%);
+
+            min-width: 240px;
+
+            padding: 15px 22px;
+
+            border: none;
+            border-radius: 8px;
+
+            background-color: #202020;
+            color: white;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .instruccion {
+            margin: 12px 0 24px 0;
+            text-align: center;
+            color: #777777;
+            font-size: 13px;
+        }
+
+
+        .ficha {
+            background-color: white;
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+
+        .titulo {
+            margin: 0 0 26px 0;
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+
+        .datos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+        }
+
+
+        .dato {
+            border-top: 1px solid #dddddd;
+            padding-top: 12px;
+        }
+
+
+        .etiqueta {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #888888;
+
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+
+
+        .valor {
+            color: #222222;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+
+        .nota {
+            margin-top: 25px;
+            padding-top: 18px;
+
+            border-top: 1px solid #dddddd;
+
+            color: #888888;
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+
+        footer {
+            padding: 30px 15px;
+            text-align: center;
+            color: #999999;
+            font-size: 11px;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+                padding: 10px;
+            }
+
+
+            model-viewer {
+                height: 480px;
+            }
+
+
+            #boton-ar {
+                width: 85%;
+            }
+
+
+            .ficha {
+                padding: 22px;
+            }
+
+
+            .titulo {
+                font-size: 28px;
+            }
+
+
+            .datos {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        PATRIMONIO DIGITAL
+    </h1>
+
+</header>
+
+
+
+<main class="contenedor">
+
+
+    <!-- MODELO 3D -->
+
+
+    <div class="visor">
+
+
+        <model-viewer
+
+            src="models/el_aguador.glb"
+
+            alt="Modelo tridimensional de la escultura El Aguador"
+
+            loading="eager"
+
+            camera-controls
+
+            touch-action="pan-y"
+
+            auto-rotate
+
+            shadow-intensity="1"
+
+            ar
+
+            ar-modes="webxr scene-viewer quick-look"
+
+            ar-placement="floor">
+
+
+            <button
+                slot="ar-button"
+                id="boton-ar">
+
+                VER EN MI ESPACIO
+
+            </button>
+
+
+        </model-viewer>
+
+
+    </div>
+
+
+    <p class="instruccion">
+
+        Arrastra para explorar la pieza en 3D
+
+    </p>
+
+
+
+    <!-- INFORMACION -->
+
+
+    <section class="ficha">
+
+
+        <h2 class="titulo">
+
+            El Aguador
+
+        </h2>
+
+
+        <div class="datos">
+
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    AUTOR
+                </span>
+
+                <div class="valor">
+                    Por completar
+                </div>
+
+            </div>
+
+
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    AÑO
+                </span>
+
+                <div class="valor">
+                    Por completar
+                </div>
+
+            </div>
+
+
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    UBICACIÓN ACTUAL
+                </span>
+
+                <div class="valor">
+                    Por completar
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="nota">
+
+            Modelo 3D generado mediante fotogrametría.
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    Proyecto de documentación digital del patrimonio
+
+</footer>
+
+
+</body>
+
+</html>
