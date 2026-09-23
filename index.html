@@ -126,6 +126,31 @@
             color: #222222;
         }
 
+        .boton-mapa {
+            display: inline-block;
+
+            margin-top: 12px;
+            padding: 11px 16px;
+
+            background-color: #eeeeee;
+            color: #222222;
+
+            border: 1px solid #d0d0d0;
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+
+            transition: background-color 0.2s;
+        }
+
+        .boton-mapa:hover {
+            background-color: #dddddd;
+        }
+
         .nota {
             border-top: 1px solid #dddddd;
             margin-top: 25px;
@@ -170,6 +195,12 @@
 
             #botonAR {
                 width: 85%;
+            }
+
+            .boton-mapa {
+                width: 100%;
+                text-align: center;
+                padding: 13px;
             }
 
         }
@@ -274,12 +305,23 @@
             <div class="dato">
 
                 <span class="etiqueta">
-                    UBICACION ACTUAL
+                    UBICACIÓN ACTUAL
                 </span>
 
                 <div class="valor">
-                    Centro Historico
+                    Centro Histórico
                 </div>
+
+
+                <a
+                    class="boton-mapa"
+                    href="https://maps.app.goo.gl/7KCZXbDLqNbj6gWy6"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    VER UBICACIÓN EN GOOGLE MAPS
+
+                </a>
 
             </div>
 
@@ -289,7 +331,7 @@
 
         <div class="nota">
 
-            Modelo 3D generado mediante fotogrametria.
+            Modelo 3D generado mediante fotogrametría.
 
         </div>
 
@@ -302,7 +344,7 @@
 
 <footer>
 
-    Proyecto de documentacion digital del patrimonio
+    Proyecto de documentación digital del patrimonio
 
 </footer>
 
