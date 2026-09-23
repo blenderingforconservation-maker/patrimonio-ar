@@ -2,13 +2,17 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Patrimonio Digital - El Aguador</title>
 
-    <script type="module"
+    <script
+        type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
 
@@ -52,6 +56,7 @@
         }
 
         model-viewer {
+            display: block;
             width: 100%;
             height: 60vh;
             min-height: 400px;
@@ -59,12 +64,14 @@
         }
 
         #botonAR {
+
             position: absolute;
+
             bottom: 20px;
             left: 50%;
+
             transform: translateX(-50%);
 
-            width: auto;
             min-width: 230px;
 
             background-color: #202020;
@@ -82,91 +89,77 @@
         }
 
         .instruccion {
+
             text-align: center;
+
             color: #777777;
+
             font-size: 13px;
+
             margin: 12px 0 25px 0;
         }
 
         .ficha {
+
             background-color: white;
+
             border-radius: 12px;
+
             padding: 28px;
         }
 
         .titulo {
-            margin: 0 0 25px 0;
+
+            margin: 0;
+
             font-size: 32px;
+
             font-weight: 600;
         }
 
-        .datos {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px 30px;
-        }
-
-        .dato {
-            border-top: 1px solid #dddddd;
-            padding-top: 12px;
-        }
-
-        .etiqueta {
-            display: block;
-            font-size: 11px;
-            font-weight: bold;
-            letter-spacing: 1.5px;
-            color: #888888;
-            margin-bottom: 7px;
-        }
-
-        .valor {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #222222;
-        }
-
-        .boton-mapa {
-            display: inline-block;
-
-            margin-top: 12px;
-            padding: 11px 16px;
-
-            background-color: #eeeeee;
-            color: #222222;
-
-            border: 1px solid #d0d0d0;
-            border-radius: 7px;
-
-            text-decoration: none;
-
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-
-            transition: background-color 0.2s;
-        }
-
-        .boton-mapa:hover {
-            background-color: #dddddd;
-        }
-
         .nota {
+
             border-top: 1px solid #dddddd;
+
             margin-top: 25px;
+
             padding-top: 18px;
 
             color: #888888;
+
             font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+        #error-modelo {
+
+            display: none;
+
+            padding: 18px;
+
+            background-color: #ffffff;
+
+            border-radius: 8px;
+
+            margin-top: 15px;
+
+            font-size: 14px;
+
             line-height: 1.5;
         }
 
         footer {
+
             text-align: center;
+
             color: #999999;
+
             font-size: 11px;
+
             padding: 30px 15px;
         }
+
 
         @media (max-width: 600px) {
 
@@ -187,19 +180,8 @@
                 font-size: 28px;
             }
 
-            .datos {
-                grid-template-columns: 1fr;
-                gap: 18px;
-            }
-
             #botonAR {
                 width: 85%;
-            }
-
-            .boton-mapa {
-                width: 100%;
-                text-align: center;
-                padding: 13px;
             }
 
         }
@@ -214,7 +196,9 @@
 
 <header>
 
-    <h1>PATRIMONIO DIGITAL</h1>
+    <h1>
+        PATRIMONIO DIGITAL
+    </h1>
 
 </header>
 
@@ -224,11 +208,14 @@
 
     <div class="visor">
 
+
         <model-viewer
 
-            src="models/el_aguador.glb"
+            id="modelo"
 
-            alt="Modelo tridimensional de la escultura El Aguador"
+            src="https://blenderingforconservation-maker.github.io/patrimonio-ar/models/el_aguador.glb"
+
+            alt="Modelo tridimensional de El Aguador"
 
             camera-controls
 
@@ -243,7 +230,9 @@
             ar-placement="floor">
 
 
-            <button slot="ar-button" id="botonAR">
+            <button
+                slot="ar-button"
+                id="botonAR">
 
                 VER EN MI ESPACIO
 
@@ -251,6 +240,7 @@
 
 
         </model-viewer>
+
 
     </div>
 
@@ -262,78 +252,28 @@
     </p>
 
 
+    <div id="error-modelo">
+
+        No fue posible cargar el archivo 3D.
+
+        <br><br>
+
+        El archivo solicitado es:
+
+        <strong>el_aguador.glb</strong>
+
+    </div>
+
+
     <section class="ficha">
 
-
         <h2 class="titulo">
-
             El Aguador
-
         </h2>
 
-
-        <div class="datos">
-
-
-            <div class="dato">
-
-                <span class="etiqueta">
-                    AUTOR
-                </span>
-
-                <div class="valor">
-                    Por completar
-                </div>
-
-            </div>
-
-
-            <div class="dato">
-
-                <span class="etiqueta">
-                    AÑO
-                </span>
-
-                <div class="valor">
-                    Por completar
-                </div>
-
-            </div>
-
-
-            <div class="dato">
-
-                <span class="etiqueta">
-                    UBICACIÓN ACTUAL
-                </span>
-
-                <div class="valor">
-                    Por completar
-                </div>
-
-
-                <a
-                    class="boton-mapa"
-                    href="https://www.google.com/maps"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    VER UBICACIÓN EN GOOGLE MAPS
-
-                </a>
-
-            </div>
-
-
-        </div>
-
-
         <div class="nota">
-
             Modelo 3D generado mediante fotogrametría.
-
         </div>
-
 
     </section>
 
@@ -346,6 +286,27 @@
     Proyecto de documentación digital del patrimonio
 
 </footer>
+
+
+<script>
+
+    const modelo =
+        document.getElementById("modelo");
+
+    const errorModelo =
+        document.getElementById("error-modelo");
+
+
+    modelo.addEventListener(
+        "error",
+        function () {
+
+            errorModelo.style.display = "block";
+
+        }
+    );
+
+</script>
 
 
 </body>
