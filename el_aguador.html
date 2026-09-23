@@ -11,10 +11,32 @@
 
     <title>Patrimonio Digital - El Aguador</title>
 
+
+    <!-- ================================================= -->
+    <!-- SOPORTE PARA MODELOS GLB COMPRIMIDOS CON MESHOPT -->
+    <!-- DEBE IR ANTES DE CARGAR MODEL-VIEWER              -->
+    <!-- ================================================= -->
+
+    <script>
+
+        self.ModelViewerElement =
+            self.ModelViewerElement || {};
+
+        self.ModelViewerElement.meshoptDecoderLocation =
+            "https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js";
+
+    </script>
+
+
+    <!-- ==================== -->
+    <!-- CARGAR MODEL-VIEWER  -->
+    <!-- ==================== -->
+
     <script
         type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
     </script>
+
 
     <style>
 
@@ -64,12 +86,9 @@
         }
 
         #botonAR {
-
             position: absolute;
-
             bottom: 20px;
             left: 50%;
-
             transform: translateX(-50%);
 
             min-width: 230px;
@@ -89,74 +108,52 @@
         }
 
         .instruccion {
-
             text-align: center;
-
             color: #777777;
-
             font-size: 13px;
-
             margin: 12px 0 25px 0;
         }
 
         .ficha {
-
             background-color: white;
-
             border-radius: 12px;
-
             padding: 28px;
         }
 
         .titulo {
-
-            margin: 0;
-
+            margin: 0 0 25px 0;
             font-size: 32px;
-
             font-weight: 600;
         }
 
         .nota {
-
             border-top: 1px solid #dddddd;
-
             margin-top: 25px;
-
             padding-top: 18px;
 
             color: #888888;
-
             font-size: 12px;
-
             line-height: 1.5;
         }
 
-        #error-modelo {
-
+        #estado {
             display: none;
 
-            padding: 18px;
+            margin-top: 15px;
+            padding: 14px;
 
-            background-color: #ffffff;
+            background-color: white;
 
             border-radius: 8px;
 
-            margin-top: 15px;
-
             font-size: 14px;
-
             line-height: 1.5;
         }
 
         footer {
-
             text-align: center;
-
             color: #999999;
-
             font-size: 11px;
-
             padding: 30px 15px;
         }
 
@@ -211,13 +208,17 @@
 
         <model-viewer
 
-            id="modelo"
+            id="modelo3D"
 
-            src="https://blenderingforconservation-maker.github.io/patrimonio-ar/models/el_aguador.glb"
+            src="models/el_aguador.glb"
 
             alt="Modelo tridimensional de El Aguador"
 
+            loading="eager"
+
             camera-controls
+
+            touch-action="pan-y"
 
             auto-rotate
 
@@ -252,17 +253,7 @@
     </p>
 
 
-    <div id="error-modelo">
-
-        No fue posible cargar el archivo 3D.
-
-        <br><br>
-
-        El archivo solicitado es:
-
-        <strong>el_aguador.glb</strong>
-
-    </div>
+    <div id="estado"></div>
 
 
     <section class="ficha">
@@ -291,17 +282,59 @@
 <script>
 
     const modelo =
-        document.getElementById("modelo");
+        document.getElementById("modelo3D");
 
-    const errorModelo =
-        document.getElementById("error-modelo");
+    const estado =
+        document.getElementById("estado");
+
+
+    modelo.addEventListener(
+        "load",
+        function () {
+
+            estado.style.display = "block";
+
+            estado.innerHTML =
+                "Modelo 3D cargado correctamente.";
+
+        }
+    );
 
 
     modelo.addEventListener(
         "error",
-        function () {
+        function (evento) {
 
-            errorModelo.style.display = "block";
+            estado.style.display = "block";
+
+            estado.innerHTML =
+                "No fue posible cargar el modelo 3D.<br><br>" +
+                "Tipo de error: " +
+                (
+                    evento.detail &&
+                    evento.detail.type
+                        ? evento.detail.type
+                        : "desconocido"
+                );
+
+        }
+    );
+
+
+    modelo.addEventListener(
+        "ar-status",
+        function (evento) {
+
+            if (
+                evento.detail.status === "failed"
+            ) {
+
+                estado.style.display = "block";
+
+                estado.innerHTML +=
+                    "<br><br>El modelo cargó, pero el modo AR no pudo iniciarse.";
+
+            }
 
         }
     );
