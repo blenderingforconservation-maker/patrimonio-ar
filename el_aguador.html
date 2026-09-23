@@ -8,30 +8,30 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title id="titulo-pagina">
-        Patrimonio Digital - El Aguador
-    </title>
+    <title>Patrimonio Digital</title>
 
 
     <!-- ===================================================== -->
-    <!-- SOPORTE PARA MODELOS COMPRIMIDOS CON MESHOPT          -->
-    <!-- DEBE CARGARSE ANTES DE MODEL-VIEWER                   -->
+    <!-- SOPORTE PARA MODELOS GLB COMPRIMIDOS CON MESHOPT      -->
+    <!-- NO MODIFICAR                                          -->
     <!-- ===================================================== -->
 
     <script>
-
         self.ModelViewerElement =
             self.ModelViewerElement || {};
 
         self.ModelViewerElement.meshoptDecoderLocation =
             "https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js";
-
     </script>
 
 
-    <!-- VISUALIZADOR 3D -->
+    <!-- ===================================================== -->
+    <!-- VISUALIZADOR 3D                                       -->
+    <!-- NO MODIFICAR                                          -->
+    <!-- ===================================================== -->
 
-    <script type="module"
+    <script
+        type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
 
@@ -98,6 +98,8 @@
 
 
         model-viewer {
+            display: block;
+
             width: 100%;
 
             height: 60vh;
@@ -109,7 +111,6 @@
 
 
         #botonAR {
-
             position: absolute;
 
             bottom: 20px;
@@ -139,7 +140,6 @@
 
 
         .instruccion {
-
             text-align: center;
 
             color: #777777;
@@ -151,7 +151,6 @@
 
 
         .ficha {
-
             background-color: white;
 
             border-radius: 12px;
@@ -161,7 +160,6 @@
 
 
         .titulo {
-
             margin: 0 0 25px 0;
 
             font-size: 32px;
@@ -171,7 +169,6 @@
 
 
         .datos {
-
             display: grid;
 
             grid-template-columns: 1fr 1fr;
@@ -181,7 +178,6 @@
 
 
         .dato {
-
             border-top: 1px solid #dddddd;
 
             padding-top: 12px;
@@ -189,7 +185,6 @@
 
 
         .etiqueta {
-
             display: block;
 
             font-size: 11px;
@@ -205,7 +200,6 @@
 
 
         .valor {
-
             font-size: 16px;
 
             line-height: 1.5;
@@ -214,19 +208,23 @@
         }
 
 
-        .boton-mapa {
+        /* ================================================= */
+        /* BOTÓN GOOGLE MAPS                                 */
+        /* NO MODIFICAR                                      */
+        /* ================================================= */
 
-            display: inline-block;
+        #botonMapa {
+            display: none;
 
-            margin-top: 12px;
+            margin-top: 14px;
 
-            padding: 11px 16px;
+            padding: 12px 16px;
 
             background-color: #eeeeee;
 
             color: #222222;
 
-            border: 1px solid #d0d0d0;
+            border: 1px solid #cccccc;
 
             border-radius: 7px;
 
@@ -240,14 +238,12 @@
         }
 
 
-        .boton-mapa:hover {
-
+        #botonMapa:hover {
             background-color: #dddddd;
         }
 
 
         .nota {
-
             border-top: 1px solid #dddddd;
 
             margin-top: 25px;
@@ -263,7 +259,6 @@
 
 
         footer {
-
             text-align: center;
 
             color: #999999;
@@ -274,17 +269,21 @@
         }
 
 
+
+        /* ================================================= */
+        /* VERSIÓN PARA TELÉFONO                             */
+        /* NO MODIFICAR                                      */
+        /* ================================================= */
+
         @media (max-width: 600px) {
 
 
             .contenedor {
-
                 padding: 10px;
             }
 
 
             model-viewer {
-
                 height: 55vh;
 
                 min-height: 380px;
@@ -292,19 +291,16 @@
 
 
             .ficha {
-
                 padding: 22px;
             }
 
 
             .titulo {
-
                 font-size: 28px;
             }
 
 
             .datos {
-
                 grid-template-columns: 1fr;
 
                 gap: 18px;
@@ -312,18 +308,16 @@
 
 
             #botonAR {
-
                 width: 85%;
             }
 
 
-            .boton-mapa {
-
+            #botonMapa {
                 width: 100%;
 
                 text-align: center;
 
-                padding: 13px;
+                padding: 14px;
             }
 
         }
@@ -346,6 +340,12 @@
 
 
 <main class="contenedor">
+
+
+    <!-- ================================================= -->
+    <!-- VISUALIZADOR DEL MODELO 3D                        -->
+    <!-- NO MODIFICAR                                      -->
+    <!-- ================================================= -->
 
 
     <div class="visor">
@@ -392,89 +392,103 @@
     </p>
 
 
+
+    <!-- ================================================= -->
+    <!-- FICHA INFORMATIVA                                 -->
+    <!-- NO MODIFICAR                                      -->
+    <!-- ================================================= -->
+
+
     <section class="ficha">
 
 
         <h2
             class="titulo"
-            id="titulo-obra">
+            id="tituloObra">
 
-            El Aguador
+            Título de la obra
 
         </h2>
+
 
 
         <div class="datos">
 
 
+            <!-- AUTOR -->
+
             <div class="dato">
 
                 <span class="etiqueta">
-
                     AUTOR
-
                 </span>
-
 
                 <div
                     class="valor"
-                    id="autor-obra">
+                    id="autorObra">
 
-                    Información no disponible
+                    Autor
 
                 </div>
 
             </div>
 
 
+
+            <!-- AÑO -->
+
             <div class="dato">
 
                 <span class="etiqueta">
-
                     AÑO
-
                 </span>
-
 
                 <div
                     class="valor"
-                    id="anio-obra">
+                    id="anioObra">
 
-                    Información no disponible
+                    Año
 
                 </div>
 
             </div>
 
 
+
+            <!-- UBICACIÓN -->
+
             <div class="dato">
 
                 <span class="etiqueta">
-
                     UBICACIÓN ACTUAL
-
                 </span>
 
 
                 <div
                     class="valor"
-                    id="ubicacion-obra">
+                    id="ubicacionObra">
 
-                    Información no disponible
+                    Ubicación
 
                 </div>
 
+
+
+                <!--
+                    ESTE BOTÓN SE CONFIGURA AUTOMÁTICAMENTE
+                    CON EL ENLACE ESCRITO EN "mapa"
+                -->
 
                 <a
-                    id="enlace-mapa"
-
-                    class="boton-mapa"
+                    id="botonMapa"
 
                     href=""
 
                     target="_blank"
 
-                    rel="noopener noreferrer">
+                    rel="noopener noreferrer"
+
+                    aria-label="Ver ubicación de la obra en Google Maps">
 
                     VER UBICACIÓN EN GOOGLE MAPS
 
@@ -485,6 +499,7 @@
 
 
         </div>
+
 
 
         <div class="nota">
@@ -509,7 +524,24 @@
 
 
 <!-- ===================================================== -->
-<!-- DATOS DE EL AGUADOR                                   -->
+<!-- ===================================================== -->
+<!--                                                       -->
+<!--                                                       -->
+<!--          ***** EDITAR ÚNICAMENTE AQUÍ *****           -->
+<!--                                                       -->
+<!--                                                       -->
+<!-- PARA CADA NUEVA OBRA CAMBIA SOLO ESTOS 6 DATOS:       -->
+<!--                                                       -->
+<!-- 1. modelo                                             -->
+<!-- 2. titulo                                             -->
+<!-- 3. autor                                              -->
+<!-- 4. anio                                               -->
+<!-- 5. ubicacion                                          -->
+<!-- 6. mapa                                               -->
+<!--                                                       -->
+<!-- NO MODIFICAR NADA MÁS DEL CÓDIGO                      -->
+<!--                                                       -->
+<!-- ===================================================== -->
 <!-- ===================================================== -->
 
 
@@ -519,28 +551,141 @@
 const ficha = {
 
 
+    /* ================================================= */
+    /* 1. MODELO 3D                                     */
+    /* ================================================= */
+
+    /*
+        Escribe el nombre EXACTO del archivo GLB.
+
+        El archivo debe estar dentro de:
+
+        models/
+
+        EJEMPLO:
+
+        Si el archivo se llama:
+
+        el_aguador.glb
+
+        entonces escribe:
+
+        "models/el_aguador.glb"
+    */
+
     modelo:
     "models/el_aguador.glb",
 
 
-    titulo:
-    "El Aguador",
 
+    /* ================================================= */
+    /* 2. TÍTULO DE LA OBRA                              */
+    /* ================================================= */
+
+    /*
+        EJEMPLO:
+
+        "El Aguador"
+    */
+
+    titulo:
+    "EL AGUADOR",
+
+
+
+    /* ================================================= */
+    /* 3. AUTOR                                          */
+    /* ================================================= */
+
+    /*
+        EJEMPLO:
+
+        "Mario Cuevas"
+
+        Si se desconoce:
+
+        "Desconocido"
+    */
 
     autor:
-    "Información no disponible",
+    "Mario Cuevas",
 
+
+
+    /* ================================================= */
+    /* 4. AÑO                                            */
+    /* ================================================= */
+
+    /*
+        EJEMPLO:
+
+        "2012"
+
+        También puede ser:
+
+        "ca. 1890"
+
+        o:
+
+        "Sin determinar"
+    */
 
     anio:
-    "Información no disponible",
+    "2012",
 
+
+
+    /* ================================================= */
+    /* 5. UBICACIÓN ACTUAL                               */
+    /* ================================================= */
+
+    /*
+        Escribe el nombre que verá el visitante.
+
+        EJEMPLO:
+
+        "Centro Histórico, San Luis Potosí, S.L.P."
+    */
 
     ubicacion:
-    "Información no disponible",
+    "Calzada de Guadalupe, S.L.P.",
 
+
+
+    /* ================================================= */
+    /* 6. ENLACE DE GOOGLE MAPS                          */
+    /* ================================================= */
+
+    /*
+        PASOS:
+
+        Google Maps
+            ↓
+        localizar la escultura
+            ↓
+        Compartir
+            ↓
+        Copiar vínculo
+            ↓
+        pegar el vínculo aquí
+
+
+        EJEMPLO:
+
+        "https://maps.app.goo.gl/XXXXXXXX"
+
+
+        IMPORTANTE:
+
+        Si dejas:
+
+        ""
+
+        el botón de Google Maps se ocultará automáticamente.
+    */
 
     mapa:
-    ""
+    "https://maps.app.goo.gl/c7uaEYnT5aqjtosQA"
 
 
 };
@@ -548,67 +693,119 @@ const ficha = {
 
 
 /* ===================================================== */
-/* NO MODIFICAR                                           */
+/* ===================================================== */
+/*                                                       */
+/*                                                       */
+/*              NO EDITAR DESDE AQUÍ                     */
+/*                                                       */
+/*                                                       */
+/* ===================================================== */
 /* ===================================================== */
 
 
-const modelo =
+
+/* OBTENER ELEMENTOS DE LA PÁGINA */
+
+const modelo3D =
     document.getElementById("modelo3D");
 
 
-modelo.src =
-    ficha.modelo;
+const tituloObra =
+    document.getElementById("tituloObra");
 
 
-modelo.alt =
-    "Modelo tridimensional de " + ficha.titulo;
+const autorObra =
+    document.getElementById("autorObra");
+
+
+const anioObra =
+    document.getElementById("anioObra");
+
+
+const ubicacionObra =
+    document.getElementById("ubicacionObra");
+
+
+const botonMapa =
+    document.getElementById("botonMapa");
 
 
 
-document.getElementById(
-    "titulo-obra"
-).textContent =
+/* ===================================================== */
+/* CARGAR MODELO 3D                                      */
+/* ===================================================== */
+
+/*
+   Usamos setAttribute para que la ruta permanezca
+   correctamente asociada al elemento incluso durante
+   la carga del componente model-viewer.
+*/
+
+modelo3D.setAttribute(
+    "src",
+    ficha.modelo
+);
+
+
+modelo3D.setAttribute(
+    "alt",
+    "Modelo tridimensional de " + ficha.titulo
+);
+
+
+
+/* ===================================================== */
+/* COLOCAR INFORMACIÓN DE LA OBRA                        */
+/* ===================================================== */
+
+
+tituloObra.textContent =
     ficha.titulo;
 
 
-
-document.getElementById(
-    "autor-obra"
-).textContent =
+autorObra.textContent =
     ficha.autor;
 
 
-
-document.getElementById(
-    "anio-obra"
-).textContent =
+anioObra.textContent =
     ficha.anio;
 
 
-
-document.getElementById(
-    "ubicacion-obra"
-).textContent =
+ubicacionObra.textContent =
     ficha.ubicacion;
 
 
 
-const enlaceMapa =
-    document.getElementById("enlace-mapa");
+/* ===================================================== */
+/* CONFIGURAR BOTÓN DE GOOGLE MAPS                       */
+/* ===================================================== */
 
 
-if (ficha.mapa) {
+if (
+    ficha.mapa &&
+    ficha.mapa.trim() !== ""
+) {
 
-    enlaceMapa.href =
+    botonMapa.href =
         ficha.mapa;
 
-} else {
+    botonMapa.style.display =
+        "inline-block";
 
-    enlaceMapa.style.display =
+}
+
+else {
+
+    botonMapa.style.display =
         "none";
 
 }
 
+
+
+/* ===================================================== */
+/* CAMBIAR TÍTULO DE LA PESTAÑA DEL NAVEGADOR            */
+/* ===================================================== */
 
 
 document.title =
