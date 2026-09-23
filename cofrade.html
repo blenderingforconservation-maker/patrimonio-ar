@@ -8,13 +8,12 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title id="titulo-pagina">
-        Patrimonio Digital
-    </title>
+    <title>Patrimonio Digital - El Cofrade</title>
 
 
     <!-- VISUALIZADOR 3D -->
-    <script type="module"
+    <script
+        type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
 
@@ -101,27 +100,21 @@
 
             transform: translateX(-50%);
 
-
             min-width: 230px;
-
 
             background-color: #202020;
 
             color: white;
 
-
             border: none;
 
             border-radius: 8px;
 
-
             padding: 15px 22px;
-
 
             font-size: 15px;
 
             font-weight: bold;
-
 
             cursor: pointer;
         }
@@ -207,24 +200,19 @@
 
             display: inline-block;
 
-
             margin-top: 12px;
 
             padding: 11px 16px;
-
 
             background-color: #eeeeee;
 
             color: #222222;
 
-
             border: 1px solid #d0d0d0;
 
             border-radius: 7px;
 
-
             text-decoration: none;
-
 
             font-size: 12px;
 
@@ -248,7 +236,6 @@
 
             padding-top: 18px;
 
-
             color: #888888;
 
             font-size: 12px;
@@ -270,9 +257,7 @@
 
 
 
-        /* ----------------------------- */
-        /* VERSION PARA TELEFONO         */
-        /* ----------------------------- */
+        /* VERSION PARA TELEFONO */
 
         @media (max-width: 600px) {
 
@@ -350,9 +335,7 @@
 <main class="contenedor">
 
 
-    <!-- =========================== -->
-    <!-- VISUALIZADOR DEL MODELO 3D -->
-    <!-- =========================== -->
+    <!-- VISUALIZADOR 3D -->
 
 
     <div class="visor">
@@ -360,7 +343,9 @@
 
         <model-viewer
 
-            id="modelo3D"
+            src="models/cofrade.glb"
+
+            alt="Modelo tridimensional de la escultura El Cofrade"
 
             camera-controls
 
@@ -399,30 +384,21 @@
 
 
 
-
-    <!-- ======================== -->
-    <!-- FICHA DE LA OBRA         -->
-    <!-- ======================== -->
+    <!-- FICHA PATRIMONIAL -->
 
 
     <section class="ficha">
 
 
-        <h2
-            class="titulo"
-            id="titulo-obra">
+        <h2 class="titulo">
 
-            Título de la obra
+            El Cofrade
 
         </h2>
 
 
 
         <div class="datos">
-
-
-
-            <!-- AUTOR -->
 
 
             <div class="dato">
@@ -434,20 +410,14 @@
                 </span>
 
 
-                <div
-                    class="valor"
-                    id="autor-obra">
+                <div class="valor">
 
-                    Autor
+                    Mario Cuevas
 
                 </div>
 
             </div>
 
-
-
-
-            <!-- AÑO -->
 
 
             <div class="dato">
@@ -459,20 +429,14 @@
                 </span>
 
 
-                <div
-                    class="valor"
-                    id="anio-obra">
+                <div class="valor">
 
-                    Año
+                    2012
 
                 </div>
 
             </div>
 
-
-
-
-            <!-- UBICACION -->
 
 
             <div class="dato">
@@ -484,22 +448,18 @@
                 </span>
 
 
-                <div
-                    class="valor"
-                    id="ubicacion-obra">
+                <div class="valor">
 
-                    Ubicación
+                    Centro Histórico, San Luis Potosí
 
                 </div>
 
 
 
                 <a
-                    id="enlace-mapa"
-
                     class="boton-mapa"
 
-                    href="https://www.google.com/maps"
+                    href="https://maps.app.goo.gl/QpFFbSgEVGTPJSHv7"
 
                     target="_blank"
 
@@ -511,7 +471,6 @@
 
 
             </div>
-
 
 
         </div>
@@ -537,129 +496,6 @@
     Proyecto de documentación digital del patrimonio
 
 </footer>
-
-
-
-
-
-<!-- ===================================================== -->
-<!--                                                       -->
-<!--          ZONA EDITABLE DE LA PLANTILLA                -->
-<!--                                                       -->
-<!--          CAMBIAR ÚNICAMENTE ESTOS DATOS               -->
-<!--                                                       -->
-<!-- ===================================================== -->
-
-
-<script>
-
-
-const ficha = {
-
-
-    /* ARCHIVO DEL MODELO 3D */
-
-    modelo:
-    "models/cofrade.glb",
-
-
-
-    /* TITULO DE LA PIEZA */
-
-    titulo:
-    "El Cofrade",
-
-
-
-    /* AUTOR */
-
-    autor:
-    "Mario Cuevas",
-
-
-
-    /*2012*/
-
-    anio:
-    "2012",
-
-
-
-    /* UBICACION ACTUAL */
-
-    ubicacion:
-    "Centro Histórico San Luis Potosi",
-
-
-
-    /* ENLACE DE GOOGLE MAPS */
-
-    mapa:
-    "https://maps.app.goo.gl/QpFFbSgEVGTPJSHv7"
-
-
-};
-
-
-
-/* ===================================================== */
-/* NO MODIFICAR A PARTIR DE ESTA LINEA                   */
-/* ===================================================== */
-
-
-const modelo =
-    document.getElementById("modelo3D");
-
-
-modelo.src =
-    ficha.modelo;
-
-
-modelo.alt =
-    "Modelo tridimensional de " + ficha.titulo;
-
-
-
-document.getElementById(
-    "titulo-obra"
-).textContent =
-    ficha.titulo;
-
-
-
-document.getElementById(
-    "autor-obra"
-).textContent =
-    ficha.autor;
-
-
-
-document.getElementById(
-    "anio-obra"
-).textContent =
-    ficha.anio;
-
-
-
-document.getElementById(
-    "ubicacion-obra"
-).textContent =
-    ficha.ubicacion;
-
-
-
-document.getElementById(
-    "enlace-mapa"
-).href =
-    ficha.mapa;
-
-
-
-document.title =
-    "Patrimonio Digital - " + ficha.titulo;
-
-
-</script>
 
 
 </body>
