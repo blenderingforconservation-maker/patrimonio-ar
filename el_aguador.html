@@ -5,17 +5,18 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <title>Patrimonio Digital - El Aguador</title>
+    <title id="titulo-pagina">
+        Patrimonio Digital - El Aguador
+    </title>
 
 
-    <!-- ================================================= -->
-    <!-- SOPORTE PARA MODELOS GLB COMPRIMIDOS CON MESHOPT -->
-    <!-- DEBE IR ANTES DE CARGAR MODEL-VIEWER              -->
-    <!-- ================================================= -->
+    <!-- ===================================================== -->
+    <!-- SOPORTE PARA MODELOS COMPRIMIDOS CON MESHOPT          -->
+    <!-- DEBE CARGARSE ANTES DE MODEL-VIEWER                   -->
+    <!-- ===================================================== -->
 
     <script>
 
@@ -28,13 +29,10 @@
     </script>
 
 
-    <!-- ==================== -->
-    <!-- CARGAR MODEL-VIEWER  -->
-    <!-- ==================== -->
+    <!-- VISUALIZADOR 3D -->
 
-    <script
-        type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
+    <script type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
 
 
@@ -44,141 +42,288 @@
             box-sizing: border-box;
         }
 
+
         body {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             background-color: #f2f0eb;
+
             color: #222222;
         }
 
+
         header {
             background-color: #202020;
+
             color: white;
+
             text-align: center;
+
             padding: 20px;
         }
 
+
         header h1 {
             margin: 0;
+
             font-size: 20px;
+
             letter-spacing: 2px;
         }
 
+
         .contenedor {
             max-width: 850px;
+
             margin: 0 auto;
+
             padding: 16px;
         }
 
+
         .visor {
             position: relative;
+
             background-color: #dedbd4;
+
             border-radius: 12px;
+
             overflow: hidden;
         }
 
+
         model-viewer {
-            display: block;
             width: 100%;
+
             height: 60vh;
+
             min-height: 400px;
+
             background-color: #dedbd4;
         }
 
+
         #botonAR {
+
             position: absolute;
+
             bottom: 20px;
+
             left: 50%;
+
             transform: translateX(-50%);
 
             min-width: 230px;
 
             background-color: #202020;
+
             color: white;
 
             border: none;
+
             border-radius: 8px;
 
             padding: 15px 22px;
 
             font-size: 15px;
+
             font-weight: bold;
 
             cursor: pointer;
         }
 
+
         .instruccion {
+
             text-align: center;
+
             color: #777777;
+
             font-size: 13px;
+
             margin: 12px 0 25px 0;
         }
 
+
         .ficha {
+
             background-color: white;
+
             border-radius: 12px;
+
             padding: 28px;
         }
 
+
         .titulo {
+
             margin: 0 0 25px 0;
+
             font-size: 32px;
+
             font-weight: 600;
         }
 
-        .nota {
+
+        .datos {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px 30px;
+        }
+
+
+        .dato {
+
             border-top: 1px solid #dddddd;
+
+            padding-top: 12px;
+        }
+
+
+        .etiqueta {
+
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            color: #888888;
+
+            margin-bottom: 7px;
+        }
+
+
+        .valor {
+
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            color: #222222;
+        }
+
+
+        .boton-mapa {
+
+            display: inline-block;
+
+            margin-top: 12px;
+
+            padding: 11px 16px;
+
+            background-color: #eeeeee;
+
+            color: #222222;
+
+            border: 1px solid #d0d0d0;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        .boton-mapa:hover {
+
+            background-color: #dddddd;
+        }
+
+
+        .nota {
+
+            border-top: 1px solid #dddddd;
+
             margin-top: 25px;
+
             padding-top: 18px;
 
             color: #888888;
+
             font-size: 12px;
+
             line-height: 1.5;
         }
 
-        #estado {
-            display: none;
-
-            margin-top: 15px;
-            padding: 14px;
-
-            background-color: white;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-            line-height: 1.5;
-        }
 
         footer {
+
             text-align: center;
+
             color: #999999;
+
             font-size: 11px;
+
             padding: 30px 15px;
         }
 
 
         @media (max-width: 600px) {
 
+
             .contenedor {
+
                 padding: 10px;
             }
 
+
             model-viewer {
+
                 height: 55vh;
+
                 min-height: 380px;
             }
 
+
             .ficha {
+
                 padding: 22px;
             }
 
+
             .titulo {
+
                 font-size: 28px;
             }
 
+
+            .datos {
+
+                grid-template-columns: 1fr;
+
+                gap: 18px;
+            }
+
+
             #botonAR {
+
                 width: 85%;
+            }
+
+
+            .boton-mapa {
+
+                width: 100%;
+
+                text-align: center;
+
+                padding: 13px;
             }
 
         }
@@ -209,12 +354,6 @@
         <model-viewer
 
             id="modelo3D"
-
-            src="models/el_aguador.glb"
-
-            alt="Modelo tridimensional de El Aguador"
-
-            loading="eager"
 
             camera-controls
 
@@ -253,18 +392,107 @@
     </p>
 
 
-    <div id="estado"></div>
-
-
     <section class="ficha">
 
-        <h2 class="titulo">
+
+        <h2
+            class="titulo"
+            id="titulo-obra">
+
             El Aguador
+
         </h2>
 
-        <div class="nota">
-            Modelo 3D generado mediante fotogrametría.
+
+        <div class="datos">
+
+
+            <div class="dato">
+
+                <span class="etiqueta">
+
+                    AUTOR
+
+                </span>
+
+
+                <div
+                    class="valor"
+                    id="autor-obra">
+
+                    Información no disponible
+
+                </div>
+
+            </div>
+
+
+            <div class="dato">
+
+                <span class="etiqueta">
+
+                    AÑO
+
+                </span>
+
+
+                <div
+                    class="valor"
+                    id="anio-obra">
+
+                    Información no disponible
+
+                </div>
+
+            </div>
+
+
+            <div class="dato">
+
+                <span class="etiqueta">
+
+                    UBICACIÓN ACTUAL
+
+                </span>
+
+
+                <div
+                    class="valor"
+                    id="ubicacion-obra">
+
+                    Información no disponible
+
+                </div>
+
+
+                <a
+                    id="enlace-mapa"
+
+                    class="boton-mapa"
+
+                    href=""
+
+                    target="_blank"
+
+                    rel="noopener noreferrer">
+
+                    VER UBICACIÓN EN GOOGLE MAPS
+
+                </a>
+
+
+            </div>
+
+
         </div>
+
+
+        <div class="nota">
+
+            Modelo 3D generado mediante fotogrametría.
+
+        </div>
+
 
     </section>
 
@@ -279,65 +507,113 @@
 </footer>
 
 
+
+<!-- ===================================================== -->
+<!-- DATOS DE EL AGUADOR                                   -->
+<!-- ===================================================== -->
+
+
 <script>
 
-    const modelo =
-        document.getElementById("modelo3D");
 
-    const estado =
-        document.getElementById("estado");
+const ficha = {
 
 
-    modelo.addEventListener(
-        "load",
-        function () {
-
-            estado.style.display = "block";
-
-            estado.innerHTML =
-                "Modelo 3D cargado correctamente.";
-
-        }
-    );
+    modelo:
+    "models/el_aguador.glb",
 
 
-    modelo.addEventListener(
-        "error",
-        function (evento) {
-
-            estado.style.display = "block";
-
-            estado.innerHTML =
-                "No fue posible cargar el modelo 3D.<br><br>" +
-                "Tipo de error: " +
-                (
-                    evento.detail &&
-                    evento.detail.type
-                        ? evento.detail.type
-                        : "desconocido"
-                );
-
-        }
-    );
+    titulo:
+    "El Aguador",
 
 
-    modelo.addEventListener(
-        "ar-status",
-        function (evento) {
+    autor:
+    "Información no disponible",
 
-            if (
-                evento.detail.status === "failed"
-            ) {
 
-                estado.style.display = "block";
+    anio:
+    "Información no disponible",
 
-                estado.innerHTML +=
-                    "<br><br>El modelo cargó, pero el modo AR no pudo iniciarse.";
 
-            }
+    ubicacion:
+    "Información no disponible",
 
-        }
-    );
+
+    mapa:
+    ""
+
+
+};
+
+
+
+/* ===================================================== */
+/* NO MODIFICAR                                           */
+/* ===================================================== */
+
+
+const modelo =
+    document.getElementById("modelo3D");
+
+
+modelo.src =
+    ficha.modelo;
+
+
+modelo.alt =
+    "Modelo tridimensional de " + ficha.titulo;
+
+
+
+document.getElementById(
+    "titulo-obra"
+).textContent =
+    ficha.titulo;
+
+
+
+document.getElementById(
+    "autor-obra"
+).textContent =
+    ficha.autor;
+
+
+
+document.getElementById(
+    "anio-obra"
+).textContent =
+    ficha.anio;
+
+
+
+document.getElementById(
+    "ubicacion-obra"
+).textContent =
+    ficha.ubicacion;
+
+
+
+const enlaceMapa =
+    document.getElementById("enlace-mapa");
+
+
+if (ficha.mapa) {
+
+    enlaceMapa.href =
+        ficha.mapa;
+
+} else {
+
+    enlaceMapa.style.display =
+        "none";
+
+}
+
+
+
+document.title =
+    "Patrimonio Digital - " + ficha.titulo;
+
 
 </script>
 
