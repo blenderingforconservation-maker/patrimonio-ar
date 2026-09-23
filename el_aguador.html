@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Patrimonio Digital - El Aguador</title>
 
-
-    <!-- MODEL VIEWER -->
-
-    <script
-        type="module"
-        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
+    <script type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
     </script>
-
 
     <style>
 
@@ -27,14 +18,12 @@
             box-sizing: border-box;
         }
 
-
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f1f0ec;
+            background-color: #f2f0eb;
             color: #222222;
         }
-
 
         header {
             background-color: #202020;
@@ -43,13 +32,11 @@
             padding: 20px;
         }
 
-
         header h1 {
             margin: 0;
             font-size: 20px;
             letter-spacing: 2px;
         }
-
 
         .contenedor {
             max-width: 850px;
@@ -57,41 +44,36 @@
             padding: 16px;
         }
 
-
         .visor {
             position: relative;
-            width: 100%;
-            background-color: #d8d6d0;
+            background-color: #dedbd4;
             border-radius: 12px;
             overflow: hidden;
         }
 
-
         model-viewer {
-            display: block;
             width: 100%;
-            height: 600px;
-            background-color: #d8d6d0;
+            height: 60vh;
+            min-height: 400px;
+            background-color: #dedbd4;
         }
 
-
-        #boton-ar {
+        #botonAR {
             position: absolute;
-
-            left: 50%;
             bottom: 20px;
-
+            left: 50%;
             transform: translateX(-50%);
 
-            min-width: 240px;
+            width: auto;
+            min-width: 230px;
 
-            padding: 15px 22px;
+            background-color: #202020;
+            color: white;
 
             border: none;
             border-radius: 8px;
 
-            background-color: #202020;
-            color: white;
+            padding: 15px 22px;
 
             font-size: 15px;
             font-weight: bold;
@@ -99,14 +81,12 @@
             cursor: pointer;
         }
 
-
         .instruccion {
-            margin: 12px 0 24px 0;
             text-align: center;
             color: #777777;
             font-size: 13px;
+            margin: 12px 0 25px 0;
         }
-
 
         .ficha {
             background-color: white;
@@ -114,67 +94,79 @@
             padding: 28px;
         }
 
-
         .titulo {
-            margin: 0 0 26px 0;
+            margin: 0 0 25px 0;
             font-size: 32px;
             font-weight: 600;
         }
 
-
         .datos {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px 30px;
+            gap: 18px 30px;
         }
-
 
         .dato {
             border-top: 1px solid #dddddd;
             padding-top: 12px;
         }
 
-
         .etiqueta {
             display: block;
-
-            margin-bottom: 7px;
-
-            color: #888888;
-
             font-size: 11px;
             font-weight: bold;
             letter-spacing: 1.5px;
+            color: #888888;
+            margin-bottom: 7px;
         }
-
 
         .valor {
-            color: #222222;
             font-size: 16px;
             line-height: 1.5;
+            color: #222222;
         }
 
+        .boton-mapa {
+            display: inline-block;
+
+            margin-top: 12px;
+            padding: 11px 16px;
+
+            background-color: #eeeeee;
+            color: #222222;
+
+            border: 1px solid #d0d0d0;
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+
+            transition: background-color 0.2s;
+        }
+
+        .boton-mapa:hover {
+            background-color: #dddddd;
+        }
 
         .nota {
+            border-top: 1px solid #dddddd;
             margin-top: 25px;
             padding-top: 18px;
 
-            border-top: 1px solid #dddddd;
-
             color: #888888;
-
             font-size: 12px;
             line-height: 1.5;
         }
 
-
         footer {
-            padding: 30px 15px;
             text-align: center;
             color: #999999;
             font-size: 11px;
+            padding: 30px 15px;
         }
-
 
         @media (max-width: 600px) {
 
@@ -182,29 +174,32 @@
                 padding: 10px;
             }
 
-
             model-viewer {
-                height: 480px;
+                height: 55vh;
+                min-height: 380px;
             }
-
-
-            #boton-ar {
-                width: 85%;
-            }
-
 
             .ficha {
                 padding: 22px;
             }
 
-
             .titulo {
                 font-size: 28px;
             }
 
-
             .datos {
                 grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            #botonAR {
+                width: 85%;
+            }
+
+            .boton-mapa {
+                width: 100%;
+                text-align: center;
+                padding: 13px;
             }
 
         }
@@ -214,28 +209,20 @@
 </head>
 
 
-
 <body>
 
 
 <header>
 
-    <h1>
-        PATRIMONIO DIGITAL
-    </h1>
+    <h1>PATRIMONIO DIGITAL</h1>
 
 </header>
-
 
 
 <main class="contenedor">
 
 
-    <!-- MODELO 3D -->
-
-
     <div class="visor">
-
 
         <model-viewer
 
@@ -243,11 +230,7 @@
 
             alt="Modelo tridimensional de la escultura El Aguador"
 
-            loading="eager"
-
             camera-controls
-
-            touch-action="pan-y"
 
             auto-rotate
 
@@ -260,9 +243,7 @@
             ar-placement="floor">
 
 
-            <button
-                slot="ar-button"
-                id="boton-ar">
+            <button slot="ar-button" id="botonAR">
 
                 VER EN MI ESPACIO
 
@@ -270,7 +251,6 @@
 
 
         </model-viewer>
-
 
     </div>
 
@@ -280,10 +260,6 @@
         Arrastra para explorar la pieza en 3D
 
     </p>
-
-
-
-    <!-- INFORMACION -->
 
 
     <section class="ficha">
@@ -312,7 +288,6 @@
             </div>
 
 
-
             <div class="dato">
 
                 <span class="etiqueta">
@@ -326,7 +301,6 @@
             </div>
 
 
-
             <div class="dato">
 
                 <span class="etiqueta">
@@ -337,11 +311,21 @@
                     Por completar
                 </div>
 
+
+                <a
+                    class="boton-mapa"
+                    href="https://www.google.com/maps"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    VER UBICACIÓN EN GOOGLE MAPS
+
+                </a>
+
             </div>
 
 
         </div>
-
 
 
         <div class="nota">
@@ -355,7 +339,6 @@
 
 
 </main>
-
 
 
 <footer>
