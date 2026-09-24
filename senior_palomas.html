@@ -307,7 +307,14 @@
 
             font-size: 11px;
 
+            line-height: 1.7;
+
             padding: 30px 15px;
+        }
+
+
+        footer strong {
+            color: #666666;
         }
 
 
@@ -543,6 +550,7 @@
         <!-- SE MUESTRA AUTOMÁTICAMENTE SI HAY TEXTO           -->
         <!-- ================================================= -->
 
+
         <div id="seccionHistoria">
 
             <h3>
@@ -569,9 +577,21 @@
 </main>
 
 
+
+<!-- ===================================================== -->
+<!-- AUTORÍA DEL PROYECTO                                  -->
+<!-- ===================================================== -->
+
 <footer>
 
     Proyecto de documentación digital del patrimonio
+
+    <br>
+
+    Realizado por
+    <strong>
+        Mapeando y Preservando S.L.P.
+    </strong>
 
 </footer>
 
@@ -609,7 +629,11 @@ const ficha = {
     /* ================================================= */
 
     /*
-        EJEMPLO:
+        El archivo debe estar dentro de la carpeta:
+
+        models/
+
+        Ejemplo:
 
         "models/senior_palomas.glb"
     */
@@ -660,13 +684,11 @@ const ficha = {
     /* ================================================= */
 
     /*
-        Pega aquí el vínculo de Google Maps.
+        Si el campo queda vacío:
 
-        Si lo dejas vacío:
+        mapa: ""
 
-        ""
-
-        el botón no aparecerá.
+        el botón de Google Maps desaparecerá.
     */
 
     mapa:
@@ -679,28 +701,16 @@ const ficha = {
     /* ================================================= */
 
     /*
-        Aquí puedes escribir un texto breve sobre:
+        Si el campo queda vacío:
 
-        - origen de la pieza
-        - contexto histórico
-        - significado
-        - relación con la ciudad
-        - acontecimientos relevantes
-        - cambios o restauraciones
+        historia: ""
 
-        RECOMENDACIÓN:
-        entre 50 y 120 palabras para no saturar la pantalla.
-
-        Si dejas:
-
-        ""
-
-        todo el apartado de INFORMACIÓN HISTÓRICA
+        el apartado completo de información histórica
         desaparecerá automáticamente.
     */
 
     historia:
-    "Escultura que representa al señor José Moreno Díaz, un ciudadano que se convirtió en símbolo de dedicación y empatía. Se relata que asistía hasta dos veces al día,cada día del año a la Plaza de Armas para alimentar a las palomas. Las palomas lo reconocían al verlo y volaban hacia él, parándose incluso en sus hombros y brazos."
+    "Escultura que representa al señor José Moreno Díaz, un ciudadano que se convirtió en símbolo de dedicación y empatía. Se relata que asistía hasta dos veces al día, cada día del año, a la Plaza de Armas para alimentar a las palomas. Las palomas lo reconocían al verlo y volaban hacia él, posándose incluso en sus hombros y brazos."
 
 
 };
