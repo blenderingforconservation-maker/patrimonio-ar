@@ -243,6 +243,48 @@
         }
 
 
+        /* ================================================= */
+        /* INFORMACIÓN HISTÓRICA                             */
+        /* NO MODIFICAR                                      */
+        /* ================================================= */
+
+        #seccionHistoria {
+            display: none;
+
+            border-top: 1px solid #dddddd;
+
+            margin-top: 28px;
+
+            padding-top: 22px;
+        }
+
+
+        #seccionHistoria h3 {
+            margin: 0 0 12px 0;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            color: #555555;
+        }
+
+
+        #historiaObra {
+            margin: 0;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            color: #444444;
+
+            white-space: pre-line;
+        }
+
+
         .nota {
             border-top: 1px solid #dddddd;
 
@@ -473,12 +515,6 @@
                 </div>
 
 
-
-                <!--
-                    ESTE BOTÓN SE CONFIGURA AUTOMÁTICAMENTE
-                    CON EL ENLACE ESCRITO EN "mapa"
-                -->
-
                 <a
                     id="botonMapa"
 
@@ -497,6 +533,24 @@
 
             </div>
 
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- INFORMACIÓN HISTÓRICA                             -->
+        <!-- SE MUESTRA AUTOMÁTICAMENTE SI HAY TEXTO           -->
+        <!-- ================================================= -->
+
+        <div id="seccionHistoria">
+
+            <h3>
+                INFORMACIÓN HISTÓRICA
+            </h3>
+
+            <p id="historiaObra">
+            </p>
 
         </div>
 
@@ -526,11 +580,9 @@
 <!-- ===================================================== -->
 <!-- ===================================================== -->
 <!--                                                       -->
-<!--                                                       -->
 <!--          ***** EDITAR ÚNICAMENTE AQUÍ *****           -->
 <!--                                                       -->
-<!--                                                       -->
-<!-- PARA CADA NUEVA OBRA CAMBIA SOLO ESTOS 6 DATOS:       -->
+<!-- PARA CADA NUEVA OBRA CAMBIA ESTOS 7 DATOS:            -->
 <!--                                                       -->
 <!-- 1. modelo                                             -->
 <!-- 2. titulo                                             -->
@@ -538,6 +590,7 @@
 <!-- 4. anio                                               -->
 <!-- 5. ubicacion                                          -->
 <!-- 6. mapa                                               -->
+<!-- 7. historia                                           -->
 <!--                                                       -->
 <!-- NO MODIFICAR NADA MÁS DEL CÓDIGO                      -->
 <!--                                                       -->
@@ -556,21 +609,9 @@ const ficha = {
     /* ================================================= */
 
     /*
-        Escribe el nombre EXACTO del archivo GLB.
-
-        El archivo debe estar dentro de:
-
-        models/
-
         EJEMPLO:
 
-        Si el archivo se llama:
-
-        el_aguador.glb
-
-        entonces escribe:
-
-        "models/el_aguador.glb"
+        "models/senior_palomas.glb"
     */
 
     modelo:
@@ -582,12 +623,6 @@ const ficha = {
     /* 2. TÍTULO DE LA OBRA                              */
     /* ================================================= */
 
-    /*
-        EJEMPLO:
-
-        "El Aguador"
-    */
-
     titulo:
     "SEÑOR DE LAS PALOMAS",
 
@@ -596,16 +631,6 @@ const ficha = {
     /* ================================================= */
     /* 3. AUTOR                                          */
     /* ================================================= */
-
-    /*
-        EJEMPLO:
-
-        "Mario Cuevas"
-
-        Si se desconoce:
-
-        "Desconocido"
-    */
 
     autor:
     "Mario Cuevas",
@@ -616,22 +641,8 @@ const ficha = {
     /* 4. AÑO                                            */
     /* ================================================= */
 
-    /*
-        EJEMPLO:
-
-        "2012"
-
-        También puede ser:
-
-        "ca. 1890"
-
-        o:
-
-        "Sin determinar"
-    */
-
     anio:
-    "indeterminado",
+    "Indeterminado",
 
 
 
@@ -639,16 +650,8 @@ const ficha = {
     /* 5. UBICACIÓN ACTUAL                               */
     /* ================================================= */
 
-    /*
-        Escribe el nombre que verá el visitante.
-
-        EJEMPLO:
-
-        "Centro Histórico, San Luis Potosí, S.L.P."
-    */
-
     ubicacion:
-    "Plaza de Armas, Centro histórico S.L.P.",
+    "Plaza de Armas, Centro Histórico, S.L.P.",
 
 
 
@@ -657,35 +660,47 @@ const ficha = {
     /* ================================================= */
 
     /*
-        PASOS:
+        Pega aquí el vínculo de Google Maps.
 
-        Google Maps
-            ↓
-        localizar la escultura
-            ↓
-        Compartir
-            ↓
-        Copiar vínculo
-            ↓
-        pegar el vínculo aquí
+        Si lo dejas vacío:
 
+        ""
 
-        EJEMPLO:
+        el botón no aparecerá.
+    */
 
-        "https://maps.app.goo.gl/XXXXXXXX"
+    mapa:
+    "https://maps.app.goo.gl/s6Gk7GC3GMGEDE547",
 
 
-        IMPORTANTE:
+
+    /* ================================================= */
+    /* 7. INFORMACIÓN HISTÓRICA                          */
+    /* ================================================= */
+
+    /*
+        Aquí puedes escribir un texto breve sobre:
+
+        - origen de la pieza
+        - contexto histórico
+        - significado
+        - relación con la ciudad
+        - acontecimientos relevantes
+        - cambios o restauraciones
+
+        RECOMENDACIÓN:
+        entre 50 y 120 palabras para no saturar la pantalla.
 
         Si dejas:
 
         ""
 
-        el botón de Google Maps se ocultará automáticamente.
+        todo el apartado de INFORMACIÓN HISTÓRICA
+        desaparecerá automáticamente.
     */
 
-    mapa:
-    "https://maps.app.goo.gl/s6Gk7GC3GMGEDE547"
+    historia:
+    "Escultura que representa al señor José Moreno Díaz, un ciudadano que se convirtió en símbolo de dedicación y empatía. Se relata que asistía hasta dos veces al día,cada día del año a la Plaza de Armas para alimentar a las palomas. Las palomas lo reconocían al verlo y volaban hacia él, parándose incluso en sus hombros y brazos."
 
 
 };
@@ -695,16 +710,12 @@ const ficha = {
 /* ===================================================== */
 /* ===================================================== */
 /*                                                       */
-/*                                                       */
 /*              NO EDITAR DESDE AQUÍ                     */
 /*                                                       */
-/*                                                       */
 /* ===================================================== */
 /* ===================================================== */
 
 
-
-/* OBTENER ELEMENTOS DE LA PÁGINA */
 
 const modelo3D =
     document.getElementById("modelo3D");
@@ -730,16 +741,19 @@ const botonMapa =
     document.getElementById("botonMapa");
 
 
+const seccionHistoria =
+    document.getElementById("seccionHistoria");
+
+
+const historiaObra =
+    document.getElementById("historiaObra");
+
+
 
 /* ===================================================== */
 /* CARGAR MODELO 3D                                      */
 /* ===================================================== */
 
-/*
-   Usamos setAttribute para que la ruta permanezca
-   correctamente asociada al elemento incluso durante
-   la carga del componente model-viewer.
-*/
 
 modelo3D.setAttribute(
     "src",
@@ -755,7 +769,7 @@ modelo3D.setAttribute(
 
 
 /* ===================================================== */
-/* COLOCAR INFORMACIÓN DE LA OBRA                        */
+/* INFORMACIÓN BÁSICA                                    */
 /* ===================================================== */
 
 
@@ -777,7 +791,7 @@ ubicacionObra.textContent =
 
 
 /* ===================================================== */
-/* CONFIGURAR BOTÓN DE GOOGLE MAPS                       */
+/* GOOGLE MAPS                                           */
 /* ===================================================== */
 
 
@@ -804,7 +818,34 @@ else {
 
 
 /* ===================================================== */
-/* CAMBIAR TÍTULO DE LA PESTAÑA DEL NAVEGADOR            */
+/* INFORMACIÓN HISTÓRICA                                 */
+/* ===================================================== */
+
+
+if (
+    ficha.historia &&
+    ficha.historia.trim() !== ""
+) {
+
+    historiaObra.textContent =
+        ficha.historia;
+
+    seccionHistoria.style.display =
+        "block";
+
+}
+
+else {
+
+    seccionHistoria.style.display =
+        "none";
+
+}
+
+
+
+/* ===================================================== */
+/* TÍTULO DE LA PESTAÑA                                  */
 /* ===================================================== */
 
 
