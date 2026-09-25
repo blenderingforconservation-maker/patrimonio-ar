@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Patrimonio Digital</title>
+
+
+    <!-- ===================================================== -->
+    <!-- SOPORTE PARA MODELOS GLB COMPRIMIDOS CON MESHOPT      -->
+    <!-- NO MODIFICAR                                          -->
+    <!-- ===================================================== -->
+
+    <script>
+        self.ModelViewerElement =
+            self.ModelViewerElement || {};
+
+        self.ModelViewerElement.meshoptDecoderLocation =
+            "https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js";
+    </script>
+
+
+    <!-- ===================================================== -->
+    <!-- VISUALIZADOR 3D                                       -->
+    <!-- NO MODIFICAR                                          -->
+    <!-- ===================================================== -->
+
+    <script
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js">
+    </script>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background-color: #f2f0eb;
+
+            color: #222222;
+        }
+
+
+        header {
+            background-color: #202020;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 20px;
+        }
+
+
+        header h1 {
+            margin: 0;
+
+            font-size: 20px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .contenedor {
+            max-width: 850px;
+
+            margin: 0 auto;
+
+            padding: 16px;
+        }
+
+
+        .visor {
+            position: relative;
+
+            background-color: #dedbd4;
+
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+
+        model-viewer {
+            display: block;
+
+            width: 100%;
+
+            height: 60vh;
+
+            min-height: 400px;
+
+            background-color: #dedbd4;
+        }
+
+
+        #botonAR {
+            position: absolute;
+
+            bottom: 20px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            min-width: 230px;
+
+            background-color: #202020;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 15px 22px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .instruccion {
+            text-align: center;
+
+            color: #777777;
+
+            font-size: 13px;
+
+            margin: 12px 0 25px 0;
+        }
+
+
+        .ficha {
+            background-color: white;
+
+            border-radius: 12px;
+
+            padding: 28px;
+        }
+
+
+        .titulo {
+            margin: 0 0 25px 0;
+
+            font-size: 32px;
+
+            font-weight: 600;
+        }
+
+
+        .datos {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 18px 30px;
+        }
+
+
+        .dato {
+            border-top: 1px solid #dddddd;
+
+            padding-top: 12px;
+        }
+
+
+        .etiqueta {
+            display: block;
+
+            font-size: 11px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            color: #888888;
+
+            margin-bottom: 7px;
+        }
+
+
+        .valor {
+            font-size: 16px;
+
+            line-height: 1.5;
+
+            color: #222222;
+        }
+
+
+        /* ================================================= */
+        /* BOTÓN GOOGLE MAPS                                 */
+        /* NO MODIFICAR                                      */
+        /* ================================================= */
+
+        #botonMapa {
+            display: none;
+
+            margin-top: 14px;
+
+            padding: 12px 16px;
+
+            background-color: #eeeeee;
+
+            color: #222222;
+
+            border: 1px solid #cccccc;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 0.5px;
+        }
+
+
+        #botonMapa:hover {
+            background-color: #dddddd;
+        }
+
+
+        /* ================================================= */
+        /* INFORMACIÓN HISTÓRICA                             */
+        /* NO MODIFICAR                                      */
+        /* ================================================= */
+
+        #seccionHistoria {
+            display: none;
+
+            border-top: 1px solid #dddddd;
+
+            margin-top: 28px;
+
+            padding-top: 22px;
+        }
+
+
+        #seccionHistoria h3 {
+            margin: 0 0 12px 0;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            letter-spacing: 1.5px;
+
+            color: #555555;
+        }
+
+
+        #historiaObra {
+            margin: 0;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            color: #444444;
+
+            white-space: pre-line;
+        }
+
+
+        .nota {
+            border-top: 1px solid #dddddd;
+
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            color: #888888;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        footer {
+            text-align: center;
+
+            color: #999999;
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+            padding: 30px 15px;
+        }
+
+
+        footer strong {
+            color: #666666;
+        }
+
+
+
+        /* ================================================= */
+        /* VERSIÓN PARA TELÉFONO                             */
+        /* NO MODIFICAR                                      */
+        /* ================================================= */
+
+        @media (max-width: 600px) {
+
+
+            .contenedor {
+                padding: 10px;
+            }
+
+
+            model-viewer {
+                height: 55vh;
+
+                min-height: 380px;
+            }
+
+
+            .ficha {
+                padding: 22px;
+            }
+
+
+            .titulo {
+                font-size: 28px;
+            }
+
+
+            .datos {
+                grid-template-columns: 1fr;
+
+                gap: 18px;
+            }
+
+
+            #botonAR {
+                width: 85%;
+            }
+
+
+            #botonMapa {
+                width: 100%;
+
+                text-align: center;
+
+                padding: 14px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>
+        PATRIMONIO DIGITAL
+    </h1>
+
+</header>
+
+
+<main class="contenedor">
+
+
+    <!-- ================================================= -->
+    <!-- VISUALIZADOR DEL MODELO 3D                        -->
+    <!-- NO MODIFICAR                                      -->
+    <!-- ================================================= -->
+
+
+    <div class="visor">
+
+
+        <model-viewer
+
+            id="modelo3D"
+
+            camera-controls
+
+            touch-action="pan-y"
+
+            auto-rotate
+
+            shadow-intensity="1"
+
+            ar
+
+            ar-modes="webxr scene-viewer quick-look"
+
+            ar-placement="floor">
+
+
+            <button
+                slot="ar-button"
+                id="botonAR">
+
+                VER EN MI ESPACIO
+
+            </button>
+
+
+        </model-viewer>
+
+
+    </div>
+
+
+    <p class="instruccion">
+
+        Arrastra para explorar la pieza en 3D
+
+    </p>
+
+
+
+    <!-- ================================================= -->
+    <!-- FICHA INFORMATIVA                                 -->
+    <!-- NO MODIFICAR                                      -->
+    <!-- ================================================= -->
+
+
+    <section class="ficha">
+
+
+        <h2
+            class="titulo"
+            id="tituloObra">
+
+            Título de la obra
+
+        </h2>
+
+
+
+        <div class="datos">
+
+
+            <!-- AUTOR -->
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    AUTOR
+                </span>
+
+                <div
+                    class="valor"
+                    id="autorObra">
+
+                    Autor
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AÑO -->
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    AÑO
+                </span>
+
+                <div
+                    class="valor"
+                    id="anioObra">
+
+                    Año
+
+                </div>
+
+            </div>
+
+
+
+            <!-- UBICACIÓN -->
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    UBICACIÓN ACTUAL
+                </span>
+
+
+                <div
+                    class="valor"
+                    id="ubicacionObra">
+
+                    Ubicación
+
+                </div>
+
+
+                <a
+                    id="botonMapa"
+
+                    href=""
+
+                    target="_blank"
+
+                    rel="noopener noreferrer"
+
+                    aria-label="Ver ubicación de la obra en Google Maps">
+
+                    VER UBICACIÓN EN GOOGLE MAPS
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- INFORMACIÓN HISTÓRICA                             -->
+        <!-- SE MUESTRA AUTOMÁTICAMENTE SI HAY TEXTO           -->
+        <!-- ================================================= -->
+
+
+        <div id="seccionHistoria">
+
+            <h3>
+                INFORMACIÓN HISTÓRICA
+            </h3>
+
+            <p id="historiaObra">
+            </p>
+
+        </div>
+
+
+
+        <div class="nota">
+
+            Modelo 3D generado mediante fotogrametría.
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ===================================================== -->
+<!-- AUTORÍA DEL PROYECTO                                  -->
+<!-- ===================================================== -->
+
+<footer>
+
+    Proyecto de documentación digital del patrimonio
+
+    <br>
+
+    Realizado por
+    <strong>
+        Mapeando y Preservando S.L.P.
+    </strong>
+
+</footer>
+
+
+
+<!-- ===================================================== -->
+<!-- ===================================================== -->
+<!--                                                       -->
+<!--          ***** EDITAR ÚNICAMENTE AQUÍ *****           -->
+<!--                                                       -->
+<!-- PARA CADA NUEVA OBRA CAMBIA ESTOS 7 DATOS:            -->
+<!--                                                       -->
+<!-- 1. modelo                                             -->
+<!-- 2. titulo                                             -->
+<!-- 3. autor                                              -->
+<!-- 4. anio                                               -->
+<!-- 5. ubicacion                                          -->
+<!-- 6. mapa                                               -->
+<!-- 7. historia                                           -->
+<!--                                                       -->
+<!-- NO MODIFICAR NADA MÁS DEL CÓDIGO                      -->
+<!--                                                       -->
+<!-- ===================================================== -->
+<!-- ===================================================== -->
+
+
+<script>
+
+
+const ficha = {
+
+
+    /* ================================================= */
+    /* 1. MODELO 3D                                     */
+    /* ================================================= */
+
+    /*
+        El archivo debe estar dentro de la carpeta:
+
+        models/
+
+        Ejemplo:
+
+        "models/senior_palomas.glb"
+    */
+
+    modelo:
+    "models/la_penitente",
+
+
+
+    /* ================================================= */
+    /* 2. TÍTULO DE LA OBRA                              */
+    /* ================================================= */
+
+    titulo:
+    "LA PENITENTE",
+
+
+
+    /* ================================================= */
+    /* 3. AUTOR                                          */
+    /* ================================================= */
+
+    autor:
+    "Mario Cuevas",
+
+
+
+    /* ================================================= */
+    /* 4. AÑO                                            */
+    /* ================================================= */
+
+    anio:
+    "2012",
+
+
+
+    /* ================================================= */
+    /* 5. UBICACIÓN ACTUAL                               */
+    /* ================================================= */
+
+    ubicacion:
+    "Calzada de Guadalupe, S.L.P.",
+
+
+
+    /* ================================================= */
+    /* 6. ENLACE DE GOOGLE MAPS                          */
+    /* ================================================= */
+
+    /*
+        Si el campo queda vacío:
+
+        mapa: ""
+
+        el botón de Google Maps desaparecerá.
+    */
+
+    mapa:
+    "https://maps.app.goo.gl/KE1yqxpuA28bccjT7",
+
+
+
+    /* ================================================= */
+    /* 7. INFORMACIÓN HISTÓRICA                          */
+    /* ================================================= */
+
+    /*
+        Si el campo queda vacío:
+
+        historia: ""
+
+        el apartado completo de información histórica
+        desaparecerá automáticamente.
+    */
+
+    historia:
+    "es una escultura de bronce a tamaño natural de una mujer en rodillas". Simboliza a los caminantes o peregrinos que recorren la calzada con el propósito cumplir sus mandas, pedir un favor a la virgen de Guadalupe o perdón por sus fallas; esta tradición que se puede observar cada 12 de diciembre."
+
+
+};
+
+
+
+/* ===================================================== */
+/* ===================================================== */
+/*                                                       */
+/*              NO EDITAR DESDE AQUÍ                     */
+/*                                                       */
+/* ===================================================== */
+/* ===================================================== */
+
+
+
+const modelo3D =
+    document.getElementById("modelo3D");
+
+
+const tituloObra =
+    document.getElementById("tituloObra");
+
+
+const autorObra =
+    document.getElementById("autorObra");
+
+
+const anioObra =
+    document.getElementById("anioObra");
+
+
+const ubicacionObra =
+    document.getElementById("ubicacionObra");
+
+
+const botonMapa =
+    document.getElementById("botonMapa");
+
+
+const seccionHistoria =
+    document.getElementById("seccionHistoria");
+
+
+const historiaObra =
+    document.getElementById("historiaObra");
+
+
+
+/* ===================================================== */
+/* CARGAR MODELO 3D                                      */
+/* ===================================================== */
+
+
+modelo3D.setAttribute(
+    "src",
+    ficha.modelo
+);
+
+
+modelo3D.setAttribute(
+    "alt",
+    "Modelo tridimensional de " + ficha.titulo
+);
+
+
+
+/* ===================================================== */
+/* INFORMACIÓN BÁSICA                                    */
+/* ===================================================== */
+
+
+tituloObra.textContent =
+    ficha.titulo;
+
+
+autorObra.textContent =
+    ficha.autor;
+
+
+anioObra.textContent =
+    ficha.anio;
+
+
+ubicacionObra.textContent =
+    ficha.ubicacion;
+
+
+
+/* ===================================================== */
+/* GOOGLE MAPS                                           */
+/* ===================================================== */
+
+
+if (
+    ficha.mapa &&
+    ficha.mapa.trim() !== ""
+) {
+
+    botonMapa.href =
+        ficha.mapa;
+
+    botonMapa.style.display =
+        "inline-block";
+
+}
+
+else {
+
+    botonMapa.style.display =
+        "none";
+
+}
+
+
+
+/* ===================================================== */
+/* INFORMACIÓN HISTÓRICA                                 */
+/* ===================================================== */
+
+
+if (
+    ficha.historia &&
+    ficha.historia.trim() !== ""
+) {
+
+    historiaObra.textContent =
+        ficha.historia;
+
+    seccionHistoria.style.display =
+        "block";
+
+}
+
+else {
+
+    seccionHistoria.style.display =
+        "none";
+
+}
+
+
+
+/* ===================================================== */
+/* TÍTULO DE LA PESTAÑA                                  */
+/* ===================================================== */
+
+
+document.title =
+    "Patrimonio Digital - " + ficha.titulo;
+
+
+</script>
+
+
+</body>
+
+</html>
