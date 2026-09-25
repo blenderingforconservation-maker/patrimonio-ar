@@ -8,7 +8,7 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>Patrimonio Digital</title>
+    <title>Patrimonio Digital - La Penitente</title>
 
 
     <!-- ===================================================== -->
@@ -210,7 +210,6 @@
 
         /* ================================================= */
         /* BOTÓN GOOGLE MAPS                                 */
-        /* NO MODIFICAR                                      */
         /* ================================================= */
 
         #botonMapa {
@@ -245,7 +244,6 @@
 
         /* ================================================= */
         /* INFORMACIÓN HISTÓRICA                             */
-        /* NO MODIFICAR                                      */
         /* ================================================= */
 
         #seccionHistoria {
@@ -321,7 +319,6 @@
 
         /* ================================================= */
         /* VERSIÓN PARA TELÉFONO                             */
-        /* NO MODIFICAR                                      */
         /* ================================================= */
 
         @media (max-width: 600px) {
@@ -393,7 +390,6 @@
 
     <!-- ================================================= -->
     <!-- VISUALIZADOR DEL MODELO 3D                        -->
-    <!-- NO MODIFICAR                                      -->
     <!-- ================================================= -->
 
 
@@ -444,7 +440,6 @@
 
     <!-- ================================================= -->
     <!-- FICHA INFORMATIVA                                 -->
-    <!-- NO MODIFICAR                                      -->
     <!-- ================================================= -->
 
 
@@ -455,7 +450,7 @@
             class="titulo"
             id="tituloObra">
 
-            Título de la obra
+            LA PENITENTE
 
         </h2>
 
@@ -476,7 +471,7 @@
                     class="valor"
                     id="autorObra">
 
-                    Autor
+                    Mario Cuevas
 
                 </div>
 
@@ -496,7 +491,7 @@
                     class="valor"
                     id="anioObra">
 
-                    Año
+                    2012
 
                 </div>
 
@@ -517,7 +512,7 @@
                     class="valor"
                     id="ubicacionObra">
 
-                    Ubicación
+                    Calzada de Guadalupe, S.L.P.
 
                 </div>
 
@@ -531,7 +526,7 @@
 
                     rel="noopener noreferrer"
 
-                    aria-label="Ver ubicación de la obra en Google Maps">
+                    aria-label="Ver ubicación de La Penitente en Google Maps">
 
                     VER UBICACIÓN EN GOOGLE MAPS
 
@@ -547,7 +542,6 @@
 
         <!-- ================================================= -->
         <!-- INFORMACIÓN HISTÓRICA                             -->
-        <!-- SE MUESTRA AUTOMÁTICAMENTE SI HAY TEXTO           -->
         <!-- ================================================= -->
 
 
@@ -582,6 +576,7 @@
 <!-- AUTORÍA DEL PROYECTO                                  -->
 <!-- ===================================================== -->
 
+
 <footer>
 
     Proyecto de documentación digital del patrimonio
@@ -598,23 +593,7 @@
 
 
 <!-- ===================================================== -->
-<!-- ===================================================== -->
-<!--                                                       -->
-<!--          ***** EDITAR ÚNICAMENTE AQUÍ *****           -->
-<!--                                                       -->
-<!-- PARA CADA NUEVA OBRA CAMBIA ESTOS 7 DATOS:            -->
-<!--                                                       -->
-<!-- 1. modelo                                             -->
-<!-- 2. titulo                                             -->
-<!-- 3. autor                                              -->
-<!-- 4. anio                                               -->
-<!-- 5. ubicacion                                          -->
-<!-- 6. mapa                                               -->
-<!-- 7. historia                                           -->
-<!--                                                       -->
-<!-- NO MODIFICAR NADA MÁS DEL CÓDIGO                      -->
-<!--                                                       -->
-<!-- ===================================================== -->
+<!-- DATOS DE ESTA PIEZA                                   -->
 <!-- ===================================================== -->
 
 
@@ -625,18 +604,8 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 1. MODELO 3D                                     */
+    /* MODELO 3D                                         */
     /* ================================================= */
-
-    /*
-        El archivo debe estar dentro de la carpeta:
-
-        models/
-
-        Ejemplo:
-
-        "models/senior_palomas.glb"
-    */
 
     modelo:
     "models/la_penitente.glb",
@@ -644,7 +613,7 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 2. TÍTULO DE LA OBRA                              */
+    /* TÍTULO                                            */
     /* ================================================= */
 
     titulo:
@@ -653,7 +622,7 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 3. AUTOR                                          */
+    /* AUTOR                                             */
     /* ================================================= */
 
     autor:
@@ -662,7 +631,7 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 4. AÑO                                            */
+    /* AÑO                                               */
     /* ================================================= */
 
     anio:
@@ -671,7 +640,7 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 5. UBICACIÓN ACTUAL                               */
+    /* UBICACIÓN                                         */
     /* ================================================= */
 
     ubicacion:
@@ -680,16 +649,8 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 6. ENLACE DE GOOGLE MAPS                          */
+    /* GOOGLE MAPS                                       */
     /* ================================================= */
-
-    /*
-        Si el campo queda vacío:
-
-        mapa: ""
-
-        el botón de Google Maps desaparecerá.
-    */
 
     mapa:
     "https://maps.app.goo.gl/KE1yqxpuA28bccjT7",
@@ -697,20 +658,11 @@ const ficha = {
 
 
     /* ================================================= */
-    /* 7. INFORMACIÓN HISTÓRICA                          */
+    /* INFORMACIÓN HISTÓRICA                             */
     /* ================================================= */
 
-    /*
-        Si el campo queda vacío:
-
-        historia: ""
-
-        el apartado completo de información histórica
-        desaparecerá automáticamente.
-    */
-
     historia:
-    "es una escultura de bronce a tamaño natural de una mujer en rodillas". Simboliza a los caminantes o peregrinos que recorren la calzada con el propósito cumplir sus mandas, pedir un favor a la virgen de Guadalupe o perdón por sus fallas; esta tradición que se puede observar cada 12 de diciembre."
+    "Es una escultura de bronce a tamaño natural que representa a una mujer arrodillada. Simboliza a los caminantes o peregrinos que recorren la Calzada de Guadalupe con el propósito de cumplir sus mandas, pedir un favor a la Virgen de Guadalupe o solicitar perdón por sus faltas. Esta tradición puede observarse especialmente cada 12 de diciembre."
 
 
 };
@@ -718,13 +670,8 @@ const ficha = {
 
 
 /* ===================================================== */
+/* NO MODIFICAR DESDE AQUÍ                               */
 /* ===================================================== */
-/*                                                       */
-/*              NO EDITAR DESDE AQUÍ                     */
-/*                                                       */
-/* ===================================================== */
-/* ===================================================== */
-
 
 
 const modelo3D =
@@ -855,7 +802,7 @@ else {
 
 
 /* ===================================================== */
-/* TÍTULO DE LA PESTAÑA                                  */
+/* TÍTULO DEL NAVEGADOR                                  */
 /* ===================================================== */
 
 
