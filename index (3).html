@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123c38">
+<meta name="description" content="Mapeando y Preservando S.L.P. | Catálogo de patrimonio cultural en 3D y realidad aumentada">
+<title>Mapeando y Preservando S.L.P. | Patrimonio 3D y AR</title>
+<link rel="preconnect" href="https://ajax.googleapis.com">
+<script>
+  // Compatibilidad con modelos GLB comprimidos mediante Meshopt.
+  self.ModelViewerElement = self.ModelViewerElement || {};
+  self.ModelViewerElement.meshoptDecoderLocation = "https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js";
+</script>
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.1.0/model-viewer.min.js"></script>
+<style>
+:root{--forest:#123c38;--deep:#102d2b;--mint:#a8e2cf;--sea:#287c70;--cream:#f6f7f3;--ink:#172826;--muted:#61726e;--line:#dce6e0}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--cream)}a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #54cdb1;outline-offset:3px}
+header{background:rgba(18,60,56,.98);color:#fff;position:sticky;top:0;z-index:5;box-shadow:0 4px 16px #072a281a}.top{max-width:1120px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 22px}.brand{font-weight:800;letter-spacing:.09em;text-transform:uppercase;text-decoration:none;font-size:clamp(13px,1.7vw,18px)}.brand small{display:block;font-size:10px;letter-spacing:.21em;color:var(--mint);margin-top:4px;font-weight:600}.nav{display:flex;gap:8px;flex-wrap:wrap}.nav button{font:inherit;color:#e7f5ef;border:1px solid #ffffff35;padding:10px 15px;background:transparent;border-radius:40px;cursor:pointer}.nav button[aria-selected="true"],.nav button:hover{background:var(--mint);border-color:var(--mint);color:var(--deep)}
+.hero{background:radial-gradient(ellipse at 75% 10%,#2c7768 0,transparent 45%),linear-gradient(135deg,#102d2b,#174941);color:white;padding:70px 22px 64px}.hero-inner{max-width:1060px;margin:auto}.eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mint);font-weight:750}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.08;max-width:900px;letter-spacing:-.04em;margin:16px auto;text-align:center}.hero p{color:#d4e8df;line-height:1.65;max-width:680px;font-size:17px}.main{scroll-margin-top:120px;max-width:1120px;margin:auto;padding:48px 22px 78px}.panel[hidden]{display:none!important}.section-head{margin-bottom:28px}.section-head h2{font-size:clamp(28px,4vw,41px);margin:0 0 9px;letter-spacing:-.03em}.section-head p{color:var(--muted);margin:0;line-height:1.6}.info{border:1px solid var(--line);background:#fff;padding:clamp(22px,4vw,42px);border-radius:18px;line-height:1.8;max-width:850px}.info p{white-space:pre-line}.social-links{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin-top:24px}.social-link{display:inline-flex;align-items:center;gap:10px;color:var(--forest);text-decoration:underline;text-underline-offset:4px;font-weight:600}.social-link svg{width:23px;height:23px;flex:none;color:var(--sea)}.social-link[aria-disabled="true"]{color:var(--muted);text-decoration:none;cursor:default}.social-link[aria-disabled="true"] svg{opacity:.6}.hint{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:23px}.card{background:#fff;border:1px solid var(--line);overflow:hidden;border-radius:17px;box-shadow:0 7px 28px #142f2710;transition:transform .2s,box-shadow .2s}.card[hidden]{display:none}.card:hover{transform:translateY(-3px);box-shadow:0 12px 33px #142f2721}.thumbnail{display:block;position:relative;height:220px;background:radial-gradient(circle at center,#edf6ef,#cddfd5);overflow:hidden}.thumbnail model-viewer{display:block;height:100%;width:100%;pointer-events:none;--poster-color:transparent}.thumbnail img{width:100%;height:100%;object-fit:cover}.mini-tag{position:absolute;left:14px;top:14px;padding:7px 10px;background:#fffdef;border-radius:30px;font-size:10px;font-weight:800;color:var(--forest);letter-spacing:.1em}.card-content{padding:19px 20px 21px}.card-content h3{font-size:21px;margin:0 0 7px}.card-content p{font-size:13px;color:var(--muted);margin:0 0 20px;line-height:1.5}.card-link{display:inline-block;text-decoration:none;font-size:13px;color:var(--forest);font-weight:800;border-bottom:2px solid var(--sea);padding-bottom:4px}.search{width:100%;max-width:360px;padding:12px 16px;border-radius:10px;border:1px solid #c6d6cc;font:inherit;background:#fff;margin:0 0 25px}footer{border-top:1px solid var(--line);padding:26px 22px;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.top{flex-direction:column;align-items:flex-start}.hero{padding:51px 22px}}@media(max-width:520px){.grid{grid-template-columns:1fr}.nav{width:100%}.nav button{flex:1;padding:10px 8px;font-size:13px}.thumbnail{height:245px}.main{padding-top:32px}.hero h1{font-size:39px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="top"><a class="brand" href="#inicio">Mapeando y Preservando</a><nav class="nav" aria-label="Menú principal"><button type="button" id="nav-nosotros" data-panel="nosotros" aria-pressed="false">¿Quiénes somos?</button><button type="button" id="nav-modelos" data-panel="modelos" aria-pressed="true">Modelos 3D y AR</button></nav></div></header>
+<section class="hero" id="inicio"><div class="hero-inner"><h1>Explora el patrimonio desde otra perspectiva.</h1></div></section>
+<main class="main" id="contenido">
+<section class="panel" id="panel-nosotros" hidden aria-labelledby="tit-nosotros"><div class="section-head"><h2 id="tit-nosotros">¿Quiénes somos?</h2><p>Conoce al equipo y la iniciativa detrás de este archivo patrimonial.</p></div><div class="info"><h3 id="about-title"></h3><p id="about-text"></p><div class="social-links" aria-label="Enlaces oficiales">
+<a class="social-link" id="official-link" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4.2" ry="9"/><path d="M3.5 9h17M3.5 15h17M12 3v18"/></svg><span>Sitio web oficial</span></a>
+<a class="social-link" id="instagram-1" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Mapeando y preservando S.L.P.</span></a>
+<a class="social-link" id="instagram-2" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Mapeando y preservando Nuevo León</span></a>
+</div></div></section>
+<section class="panel" id="panel-modelos" aria-labelledby="tit-modelos"><div class="section-head"><h2 id="tit-modelos">Modelos 3D y AR</h2><p>Selecciona una pieza para consultar su ficha completa, interactuar con el modelo 3D y abrir su experiencia en realidad aumentada.</p></div><label for="buscar" class="hint">Buscar una escultura</label><div><input id="buscar" class="search" type="search" placeholder="Escribe el nombre de una pieza…" autocomplete="off"></div><div class="grid" id="catalogo"></div><p class="hint" id="empty" hidden>No se encontraron esculturas con ese nombre.</p></section>
+</main><footer>Proyecto de documentación digital del patrimonio · Mapeando y Preservando S.L.P.</footer>
+<script>
+/* =====================================================================
+   ZONA EDITABLE 1: INFORMACIÓN DE LA ORGANIZACIÓN
+   Introduce la presentación y las tres URL aquí. Si una URL está vacía,
+   su enlace se muestra como texto no clicable hasta que la completes.
+   ===================================================================== */
+const ORGANIZACION = {
+  nombre: "Mapeando y Preservando S.L.P.",
+  descripcion: "Mapeando y Preservando S.L.P. es un proyecto de iniciativa ciudadana dedicado a la documentación, conservación y difusión del patrimonio cultural, mediante el uso de herramientas digitales como la fotogrametría, los modelos tridimensionales y la realidad aumentada.\n\nBuscamos acercar el patrimonio a estudiantes, habitantes, turistas e investigadores, fomentar su reconocimiento y valoración, y contribuir a la preservación de la memoria histórica y de las culturas en las ciudades.",
+  sitioWeb: "https://mapeandoypreservando.org/",
+  instagram1: "https://www.instagram.com/mapeandoypreservando.slp?vrfl=NXg0OWZlbnJ5ZHpz",
+  instagram2: "https://www.instagram.com/mapeandoypreservando?cplk=MXZjamhhYTZmYm51bg=="
+};
+
+/* =====================================================================
+   ZONA EDITABLE 2: CATÁLOGO DE ESCULTURAS
+   titulo = nombre visible; ficha = HTML existente; modelo = GLB
+   miniatura = ruta de imagen opcional, por ejemplo images/el_aguador.jpg
+   Si miniatura está vacía, muestra una vista 3D del GLB (carga diferida).
+   No incluyas en esta lista ejercicios o modelos fuera del proyecto.
+   Para añadir otra obra, duplica una entrada y adapta sus rutas.
+   ===================================================================== */
+const OBRAS = [
+  {titulo:"El Aguador", ficha:"el_aguador.html", modelo:"models/el_aguador.glb", miniatura:""},
+  {titulo:"Juan del Jarro", ficha:"juan_deljarro.html", modelo:"models/juan_deljarro.glb", miniatura:""},
+  {titulo:"La Penitente", ficha:"la_penitente.html", modelo:"models/la_penitente.glb", miniatura:""},
+  {titulo:"Señor de las Palomas", ficha:"senior_palomas.html", modelo:"models/senior_palomas.glb", miniatura:""}
+];
+/* =====================================================================
+   FIN DE LAS ZONAS EDITABLES. NO ES NECESARIO MODIFICAR LO SIGUIENTE.
+   ===================================================================== */
+
+document.getElementById("about-title").textContent=ORGANIZACION.nombre;
+document.getElementById("about-text").textContent=ORGANIZACION.descripcion;
+// Solo se habilitan los enlaces cuando hayas definido una URL HTTPS válida.
+function configurarEnlace(id,url){
+ const a=document.getElementById(id);
+ if(/^https:\/\/[^\s/]+/i.test(url.trim())){a.href=url.trim();a.removeAttribute("aria-disabled");}
+ else{a.removeAttribute("href");a.setAttribute("aria-disabled","true");a.title="Enlace pendiente de configuración";}
+}
+configurarEnlace("official-link",ORGANIZACION.sitioWeb);
+configurarEnlace("instagram-1",ORGANIZACION.instagram1);
+configurarEnlace("instagram-2",ORGANIZACION.instagram2);
+const catalogo=document.getElementById("catalogo");
+for(const obra of OBRAS){
+ const card=document.createElement("article");card.className="card";card.dataset.name=obra.titulo.toLocaleLowerCase("es");
+ const thumb=document.createElement("a");thumb.className="thumbnail";thumb.href=obra.ficha;thumb.setAttribute("aria-label","Ver ficha completa de "+obra.titulo);
+ if(obra.miniatura){const img=document.createElement("img");img.src=obra.miniatura;img.alt="Miniatura de "+obra.titulo;img.loading="lazy";thumb.append(img)}
+ else{const viewer=document.createElement("model-viewer");viewer.setAttribute("src",obra.modelo);viewer.setAttribute("loading","lazy");viewer.setAttribute("reveal","auto");viewer.setAttribute("alt","Vista tridimensional de "+obra.titulo);viewer.setAttribute("camera-orbit","0deg 75deg auto");viewer.setAttribute("shadow-intensity","0.7");thumb.append(viewer)}
+ const tag=document.createElement("span");tag.className="mini-tag";tag.textContent="3D + AR";thumb.append(tag);
+ const content=document.createElement("div");content.className="card-content";
+ const h=document.createElement("h3");h.textContent=obra.titulo;
+ const link=document.createElement("a");link.className="card-link";link.href=obra.ficha;link.textContent="Explorar la obra →";
+ content.append(h,link);card.append(thumb,content);catalogo.append(card);
+}
+function setPanel(name){
+ for(const panel of ["nosotros","modelos"]){const active=panel===name;document.getElementById("panel-"+panel).hidden=!active;document.getElementById("nav-"+panel).setAttribute("aria-pressed",String(active))}
+ document.getElementById("contenido").scrollIntoView({behavior:"smooth",block:"start"});
+}
+document.querySelectorAll("[data-panel]").forEach(btn=>btn.addEventListener("click",()=>setPanel(btn.dataset.panel)));
+document.getElementById("buscar").addEventListener("input",e=>{const q=e.target.value.trim().toLocaleLowerCase("es");let visible=0;for(const c of catalogo.children){c.hidden=!c.dataset.name.includes(q);if(!c.hidden)visible++}document.getElementById("empty").hidden=visible!==0});
+</script>
+</body>
+</html>
